@@ -3,9 +3,16 @@ const {
   title = 'PhuketPropertyPartners — Pevný nájem pro vlastníky, developery a realitky',
   description = 'Pevný nájem za nemovitost na Phuketu — pro vlastníky, developery i realitní kanceláře. Nemovitost vlastníte vy, o pronájem a správu se staráme my.',
   canonicalPath = '/',
+  lang = 'cs',
 } = Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+const localeMap = { cs: 'cs_CZ', en: 'en_US', de: 'de_DE', ru: 'ru_RU' };
+const ogLocale = localeMap[lang] || 'cs_CZ';
+const czUrl = new URL('/', Astro.site).toString();
+const enUrl = new URL('/en/', Astro.site).toString();
+const deUrl = new URL('/de/', Astro.site).toString();
+const ruUrl = new URL('/ru/', Astro.site).toString();
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -21,19 +28,24 @@ const orgSchema = {
 };
 ---
 <!DOCTYPE html>
-<html lang="cs">
+<html lang={lang}>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content={description}>
 <link rel="canonical" href={canonicalUrl}>
+<link rel="alternate" hreflang="cs" href={czUrl}>
+<link rel="alternate" hreflang="en" href={enUrl}>
+<link rel="alternate" hreflang="de" href={deUrl}>
+<link rel="alternate" hreflang="ru" href={ruUrl}>
+<link rel="alternate" hreflang="x-default" href={czUrl}>
 
 <meta property="og:type" content="website">
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:url" content={canonicalUrl}>
-<meta property="og:locale" content="cs_CZ">
+<meta property="og:locale" content={ogLocale}>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content={title}>
 <meta name="twitter:description" content={description}>
@@ -64,7 +76,8 @@ const orgSchema = {
   .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border:1px solid rgba(217,190,140,0.15);border-radius:50%;pointer-events:none;}
   .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:72px;font-size:14px;}
   .nav .brand{font-family:'Fraunces',serif;font-size:20px;letter-spacing:0.02em;font-weight:500;}
-  .nav .links{display:flex;gap:32px;color:rgba(247,243,232,0.7);}
+  .nav .links{display:flex;gap:32px;color:rgba(247,243,232,0.7);align-items:center;}
+  .lang-switch{border:1px solid rgba(247,243,232,0.35);padding:4px 10px;border-radius:2px;font-size:12px;letter-spacing:0.04em;}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass-light);margin-bottom:20px;}
   h1{font-size:52px;font-weight:500;line-height:1.08;max-width:680px;margin-bottom:24px;}
   .hero p{max-width:520px;font-size:17px;color:rgba(247,243,232,0.8);margin-bottom:36px;}
@@ -133,6 +146,7 @@ const orgSchema = {
     .hero, .section{padding-left:24px;padding-right:24px;}
     .nav{flex-wrap:wrap;row-gap:10px;margin-bottom:48px;}
     .nav .links{flex-wrap:wrap;gap:8px 10px;}
+    .nav .links a:not(.lang-switch){display:none;}
   }
 </style>
 </head>
