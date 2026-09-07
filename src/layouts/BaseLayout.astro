@@ -1,0 +1,142 @@
+---
+const {
+  title = 'PhuketPropertyPartners — Pevný nájem pro vlastníky, developery a realitky',
+  description = 'Pevný nájem za nemovitost na Phuketu — pro vlastníky, developery i realitní kanceláře. Nemovitost vlastníte vy, o pronájem a správu se staráme my.',
+  canonicalPath = '/',
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Property management and fixed rental program',
+  provider: {
+    '@type': 'Organization',
+    name: 'PhuketPropertyPartners',
+    url: 'https://phuketpropertypartners.com',
+  },
+  areaServed: { '@type': 'Place', name: 'Phuket, Thailand' },
+  description,
+};
+---
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonicalUrl}>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonicalUrl}>
+<meta property="og:locale" content="cs_CZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+
+<script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style is:global>
+  :root{
+    --deep:#10302E;
+    --deep-2:#173F3C;
+    --sand:#EDE6D3;
+    --sand-2:#F7F3E8;
+    --brass:#B08A4E;
+    --brass-light:#D9BE8C;
+    --teak:#6B4A32;
+    --jungle:#3E5C42;
+    --ink:#1B1A16;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--sand-2);color:var(--ink);line-height:1.6;}
+  .serif{font-family:'Fraunces',serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+
+  .hero{background:var(--deep);color:var(--sand-2);padding:64px 48px 96px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border:1px solid rgba(217,190,140,0.15);border-radius:50%;pointer-events:none;}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:72px;font-size:14px;}
+  .nav .brand{font-family:'Fraunces',serif;font-size:20px;letter-spacing:0.02em;font-weight:500;}
+  .nav .links{display:flex;gap:32px;color:rgba(247,243,232,0.7);}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass-light);margin-bottom:20px;}
+  h1{font-size:52px;font-weight:500;line-height:1.08;max-width:680px;margin-bottom:24px;}
+  .hero p{max-width:520px;font-size:17px;color:rgba(247,243,232,0.8);margin-bottom:36px;}
+  .cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:14px 26px;border-radius:2px;font-size:14px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+  .btn-primary{background:var(--brass);color:var(--deep);}
+  .btn-ghost{border:1px solid rgba(247,243,232,0.35);color:var(--sand-2);background:transparent;}
+
+  .process{padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);}
+  .step{background:var(--sand-2);padding:40px 32px;}
+  .step .num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--brass);border:1px solid var(--brass);width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-bottom:20px;}
+  .step h3{font-family:'Fraunces',serif;font-size:19px;font-weight:500;margin-bottom:10px;}
+  .step p{font-size:14px;color:#5c5a52;}
+
+  .section{padding:96px 48px;}
+  .section .head{max-width:560px;margin:0 auto 56px;text-align:center;}
+  .section .head .eyebrow{color:var(--jungle);}
+  .section h2{font-family:'Fraunces',serif;font-size:34px;font-weight:500;margin-bottom:14px;color:var(--ink);}
+  .section .head p{color:#5c5a52;font-size:15px;}
+
+  .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto;}
+  .path-card{background:var(--sand);border:1px solid rgba(27,26,22,0.15);padding:32px 28px;display:flex;flex-direction:column;}
+  .path-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--brass);border:1px solid var(--brass);width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-bottom:20px;}
+  .path-card h3{font-size:19px;font-weight:500;margin-bottom:12px;}
+  .path-card p{font-size:14px;color:#5c5a52;line-height:1.6;flex-grow:1;margin-bottom:20px;}
+  .btn-send{display:inline-block;background:var(--brass);color:var(--deep);padding:10px 18px;font-size:13.5px;font-weight:500;align-self:flex-start;}
+  .btn-send-ghost{display:inline-block;border:1px solid var(--jungle);color:var(--jungle);padding:9px 17px;font-size:13.5px;font-weight:500;align-self:flex-start;}
+
+  .own-compare{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px;margin:0 auto 20px;}
+  .own-box{background:var(--sand);border:1px solid rgba(27,26,22,0.15);padding:28px;display:flex;flex-direction:column;}
+  .own-tag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--jungle);margin-bottom:10px;}
+  .own-box p{font-size:14px;color:#5c5a52;flex-grow:1;margin-bottom:16px;}
+
+  .list-plain{max-width:640px;margin:0 auto;list-style:none;}
+  .list-plain li{font-size:15px;color:#3d3b35;padding:10px 0 10px 22px;position:relative;border-bottom:1px solid rgba(27,26,22,0.08);}
+  .list-plain li::before{content:'\2713';position:absolute;left:0;color:var(--jungle);font-weight:700;}
+
+  .services{background:var(--deep);color:var(--sand-2);}
+  .services .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:960px;margin:0 auto;}
+  .svc .idx{font-family:'IBM Plex Mono',monospace;color:var(--brass-light);font-size:12px;margin-bottom:12px;}
+  .svc h3{font-family:'Fraunces',serif;font-size:18px;font-weight:500;margin-bottom:10px;}
+  .svc p{font-size:14px;color:rgba(247,243,232,0.7);}
+
+  .faq-list{max-width:640px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid rgba(27,26,22,0.12);padding:18px 0;}
+  .faq-item summary{cursor:pointer;font-family:'Fraunces',serif;font-size:16px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";font-family:'IBM Plex Mono',monospace;color:var(--brass);font-size:18px;margin-left:16px;}
+  .faq-item[open] summary::after{content:"\2212";}
+  .faq-item p{font-size:14px;color:#5c5a52;margin-top:12px;}
+
+  .contact{padding:40px 48px 0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 32px;max-width:720px;margin:0 auto;font-size:13.5px;color:rgba(247,243,232,0.8);}
+  .contact a{text-decoration:underline;text-underline-offset:2px;}
+  .contact strong{color:rgba(247,243,232,0.95);font-weight:500;margin-right:6px;}
+
+  .legal{padding:24px 48px 40px;background:var(--deep-2);color:rgba(247,243,232,0.55);font-size:12.5px;max-width:720px;margin:0 auto;text-align:center;line-height:1.7;}
+  .legal strong{color:rgba(247,243,232,0.8);}
+  footer{background:var(--deep-2);padding:0 0 48px;}
+
+  @media (max-width:800px){
+    .process{grid-template-columns:1fr;}
+    .services .grid{grid-template-columns:1fr;}
+    .paths{grid-template-columns:1fr;}
+    .own-compare{grid-template-columns:1fr;}
+    h1{font-size:36px;}
+    .hero, .section{padding-left:24px;padding-right:24px;}
+    .nav{flex-wrap:wrap;row-gap:10px;margin-bottom:48px;}
+    .nav .links{flex-wrap:wrap;gap:8px 10px;}
+  }
+</style>
+</head>
+<body>
+  <slot />
+</body>
+</html>
