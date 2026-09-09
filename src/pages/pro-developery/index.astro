@@ -1,11 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Existuje minimální počet jednotek, které musíme nabídnout?',
+    a: 'Ne. Pevný minimální počet neexistuje — každý projekt posuzujeme individuálně podle lokality, ceny a typu jednotek. Spolupracovat mohou menší i větší developeři.',
+  },
+  {
+    q: 'Kdo garantuje klientovi pevný nájem?',
+    a: 'Nájem garantuje naše provozní společnost na základě smlouvy s konkrétním vlastníkem jednotky, ne developer — pokud se výslovně nedohodneme jinak.',
+  },
+  {
+    q: 'Platí se vstupní poplatek?',
+    a: 'Ne. Partnerství s developery je bez vstupního poplatku.',
+  },
+  {
+    q: 'Jak dlouho trvá schválení projektu?',
+    a: 'Po zaslání podkladů (typy jednotek, ceny, harmonogram výstavby) obvykle projekt vyhodnotíme do několika pracovních dní.',
+  },
+  {
+    q: 'Můžeme program nabídnout jen na část jednotek v projektu?',
+    a: 'Ano. Jednotky schvalujeme jednotlivě podle lokality, ceny a potenciálu pronájmu — nemusí jít o celý projekt.',
+  },
+];
 ---
 <BaseLayout
   title="Pro developery — PhuketPropertyPartners"
   description="Nabídněte klientům řešení i po koupi. Program pevného nájmu pro schválené jednotky, bez poplatku pro partnerské developery."
   canonicalPath="/pro-developery/"
   alternates={{ cs: '/pro-developery/', en: '/en/for-developers/', de: '/de/for-developers/', ru: '/ru/for-developers/' }}
+  faqs={faqs}
 >
 
 <section class="hero">
@@ -68,6 +92,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="eyebrow">Proč s námi spolupracovat</div>
     <h2 class="serif">Silnější prodejní argument</h2>
     <p>Klient uzavírá nájemní smlouvu přímo se schváleným vlastníkem a naší provozní společností — developer garanci nájemného nenese, pokud není výslovně dohodnuto jinak.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="head">
+    <div class="eyebrow">Časté otázky</div>
+    <h2 class="serif">Co byste měli vědět</h2>
+  </div>
+  <div class="faq-list">
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 </section>
 

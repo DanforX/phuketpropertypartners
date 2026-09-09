@@ -1,11 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Jak funguje referral odměna?',
+    a: 'Za doporučeného klienta nebo nemovitost, která se do programu úspěšně zapojí, získáte odměnu podle individuální partnerské smlouvy.',
+  },
+  {
+    q: 'Musím nemovitost prodat přes vás, abych mohl klienta doporučit?',
+    a: 'Ne. Stačí, že klient nebo nemovitost odpovídá kritériím programu pevného nájmu — samotný prodej může proběhnout kdekoli.',
+  },
+  {
+    q: 'Co když klient nemovitost už vlastní?',
+    a: 'I to je v pořádku — nemovitost posoudíme bez ohledu na to, kde a kdy byla koupena.',
+  },
+  {
+    q: 'Kdy odměnu obdržím?',
+    a: 'Až po podpisu smlouvy mezi vlastníkem a naší provozní společností, podle podmínek partnerské smlouvy.',
+  },
+  {
+    q: 'Musíme podepsat dlouhodobou smlouvu, abychom mohli doporučovat klienty?',
+    a: 'Ne, spolupráce může být příležitostná — partnerskou smlouvu podepisujeme kvůli jasným podmínkám odměny, ne kvůli závazku pravidelně doporučovat.',
+  },
+];
 ---
 <BaseLayout
   title="Pro realitky — PhuketPropertyPartners"
   description="Nabídněte klientovi víc než jen nemovitost. Doporučte klienta nebo nemovitost do programu pevného nájmu a získejte referral odměnu."
   canonicalPath="/pro-realitky/"
   alternates={{ cs: '/pro-realitky/', en: '/en/for-agencies/', de: '/de/for-agencies/', ru: '/ru/for-agencies/' }}
+  faqs={faqs}
 >
 
 <section class="hero">
@@ -45,6 +69,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="eyebrow">Referral program</div>
     <h2 class="serif">Hodnota i po dokončení prodeje</h2>
     <p>Realitní kanceláře a nezávislí makléři mohou získat odměnu za doporučení vhodného vlastníka nebo klienta do programu. Podmínky spolupráce a odměny stanovíme v samostatné partnerské smlouvě, individuálně podle situace.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="head">
+    <div class="eyebrow">Časté otázky</div>
+    <h2 class="serif">Co byste měli vědět</h2>
+  </div>
+  <div class="faq-list">
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 </section>
 

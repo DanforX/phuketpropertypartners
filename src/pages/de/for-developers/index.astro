@@ -1,5 +1,28 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Gibt es eine Mindestanzahl an Einheiten, die wir anbieten müssen?',
+    a: 'Es gibt kein festes Minimum — wir bewerten jedes Projekt individuell nach Lage, Preis und Einheitentyp. Sowohl kleinere als auch größere Bauträger können mit uns zusammenarbeiten.',
+  },
+  {
+    q: 'Wer garantiert dem Kunden die feste Miete?',
+    a: 'Die Miete wird von unserer Betriebsgesellschaft vertraglich mit dem jeweiligen Einheiteneigentümer garantiert, nicht vom Bauträger — sofern nicht ausdrücklich anders vereinbart.',
+  },
+  {
+    q: 'Gibt es eine Eintrittsgebühr?',
+    a: 'Nein. Die Partnerschaft mit Bauträgern ist gebührenfrei.',
+  },
+  {
+    q: 'Wie lange dauert die Projektfreigabe?',
+    a: 'Nach Zusendung der Unterlagen (Einheitentypen, Preise, Bauzeitplan) bewerten wir das Projekt in der Regel innerhalb weniger Werktage.',
+  },
+  {
+    q: 'Können wir das Programm nur für einen Teil der Einheiten im Projekt anbieten?',
+    a: 'Ja. Wir genehmigen Einheiten einzeln nach Lage, Preis und Vermietungspotenzial — es muss nicht das gesamte Projekt sein.',
+  },
+];
 ---
 <BaseLayout
   lang="de"
@@ -7,6 +30,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   description="Bieten Sie Ihren Kunden auch nach dem Kauf eine Lösung. Programm mit fester Miete für genehmigte Einheiten, keine Gebühr für Partner-Bauträger."
   canonicalPath="/de/for-developers/"
   alternates={{ cs: '/pro-developery/', en: '/en/for-developers/', de: '/de/for-developers/', ru: '/ru/for-developers/' }}
+  faqs={faqs}
 >
 
 <section class="hero">
@@ -69,6 +93,21 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <div class="eyebrow">Warum mit uns zusammenarbeiten</div>
     <h2 class="serif">Ein stärkeres Verkaufsargument</h2>
     <p>Der Kunde schließt den Mietvertrag direkt mit dem genehmigten Eigentümer und unserer Betreibergesellschaft ab — der Bauträger trägt keine Mietgarantie, sofern nicht ausdrücklich anders vereinbart.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="head">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="serif">Was Sie wissen sollten</h2>
+  </div>
+  <div class="faq-list">
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 </section>
 

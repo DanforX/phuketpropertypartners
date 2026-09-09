@@ -1,5 +1,28 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'How does the referral reward work?',
+    a: 'You receive a reward, per an individual partnership agreement, for a referred client or property that successfully joins the program.',
+  },
+  {
+    q: 'Do I need to sell the property through you to refer a client?',
+    a: 'No. The client or property just needs to fit the fixed rent program\'s criteria — the sale itself can happen anywhere.',
+  },
+  {
+    q: 'What if the client already owns the property?',
+    a: 'That\'s fine too — we assess the property regardless of where or when it was purchased.',
+  },
+  {
+    q: 'When do I receive the reward?',
+    a: 'After the contract between the owner and our operating company is signed, per the terms of the partnership agreement.',
+  },
+  {
+    q: 'Do we need a long-term contract to refer clients?',
+    a: 'No, cooperation can be occasional — we sign a partnership agreement for clear reward terms, not to commit you to regular referrals.',
+  },
+];
 ---
 <BaseLayout
   lang="en"
@@ -7,6 +30,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   description="Offer your client more than just a property. Refer a client or property into the fixed rent program and earn a referral reward."
   canonicalPath="/en/for-agencies/"
   alternates={{ cs: '/pro-realitky/', en: '/en/for-agencies/', de: '/de/for-agencies/', ru: '/ru/for-agencies/' }}
+  faqs={faqs}
 >
 
 <section class="hero">
@@ -46,6 +70,21 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <div class="eyebrow">Referral program</div>
     <h2 class="serif">Value even after the sale closes</h2>
     <p>Real estate agencies and independent agents can earn a reward for referring a suitable owner or client into the program. Cooperation terms and rewards are set out in a separate partnership agreement, individually per situation.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="head">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="serif">What you should know</h2>
+  </div>
+  <div class="faq-list">
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 </section>
 

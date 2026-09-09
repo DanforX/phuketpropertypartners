@@ -1,5 +1,28 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Is there a minimum number of units we need to offer?',
+    a: 'No fixed minimum — we assess each project individually based on location, price and unit types. Both smaller and larger developers can partner with us.',
+  },
+  {
+    q: 'Who guarantees the fixed rent to the client?',
+    a: 'The rent is guaranteed by our operating company under contract with the individual unit owner, not the developer — unless explicitly agreed otherwise.',
+  },
+  {
+    q: 'Is there an upfront fee?',
+    a: 'No. Partnership with developers comes with no upfront fee.',
+  },
+  {
+    q: 'How long does project approval take?',
+    a: 'Once you send us the details (unit types, prices, construction timeline), we usually evaluate the project within a few business days.',
+  },
+  {
+    q: 'Can we offer the program for only some units in a project?',
+    a: 'Yes. We approve units individually based on location, price and rental potential — it doesn\'t have to cover the whole project.',
+  },
+];
 ---
 <BaseLayout
   lang="en"
@@ -7,6 +30,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   description="Give your clients a solution after purchase too. Fixed rent program for approved units, no fee for partner developers."
   canonicalPath="/en/for-developers/"
   alternates={{ cs: '/pro-developery/', en: '/en/for-developers/', de: '/de/for-developers/', ru: '/ru/for-developers/' }}
+  faqs={faqs}
 >
 
 <section class="hero">
@@ -69,6 +93,21 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <div class="eyebrow">Why work with us</div>
     <h2 class="serif">A stronger sales argument</h2>
     <p>The client enters a rental contract directly with the approved owner and our operating company — the developer carries no rental guarantee unless explicitly agreed otherwise.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="head">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="serif">What you should know</h2>
+  </div>
+  <div class="faq-list">
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 </section>
 
