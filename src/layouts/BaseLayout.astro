@@ -4,15 +4,27 @@ const {
   description = 'Pevný nájem za nemovitost na Phuketu — pro vlastníky, developery i realitní kanceláře. Nemovitost vlastníte vy, o pronájem a správu se staráme my.',
   canonicalPath = '/',
   lang = 'cs',
+  alternates = { cs: '/', en: '/en/', de: '/de/', ru: '/ru/' },
+  faqs = null,
 } = Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
 const localeMap = { cs: 'cs_CZ', en: 'en_US', de: 'de_DE', ru: 'ru_RU' };
 const ogLocale = localeMap[lang] || 'cs_CZ';
-const czUrl = new URL('/', Astro.site).toString();
-const enUrl = new URL('/en/', Astro.site).toString();
-const deUrl = new URL('/de/', Astro.site).toString();
-const ruUrl = new URL('/ru/', Astro.site).toString();
+const czUrl = new URL(alternates.cs, Astro.site).toString();
+const enUrl = new URL(alternates.en, Astro.site).toString();
+const deUrl = new URL(alternates.de, Astro.site).toString();
+const ruUrl = new URL(alternates.ru, Astro.site).toString();
+
+const faqSchema = faqs ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+} : null;
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -51,6 +63,7 @@ const orgSchema = {
 <meta name="twitter:description" content={description}>
 
 <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+{faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">

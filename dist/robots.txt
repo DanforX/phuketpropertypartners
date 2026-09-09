@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phuketpropertypartners.com/sitemap.xml
